@@ -34,9 +34,10 @@ function getApi2(lat,lon){
         for( i = 4; i < data.list.length; i=i+8){ //i + 8 is telling it to iterate over every 24 hours for 5 days
             console.log(data.list[i])
             var forecastCard = $("<div>").addClass("card")
+            var date = $("<h2>").text(moment.unix(data.list[i].dt).format("LL"))
             var temp = $("<h2>").text("temp: " + data.list[i].main.temp)
             var humidity = $("<h2>").text("humidity:" + data.list[i].main.humidity)
-            var date = $("<h2>").text(moment.unix(data.list[i].dt).format("LL"))
+            
 
 
 
@@ -49,13 +50,25 @@ function getApi2(lat,lon){
 
 
 function getApi3(lat,lon){
-    var requestUrl3 = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7ff95d427ec7a429b5759073047c96ef`
+    var requestUrl3 = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7ff95d427ec7a429b5759073047c96ef&units=imperial`
     fetch(requestUrl3)
     .then(function (response) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);  
+        console.log(data); 
+        
+        var currentWeather = $("<div>").addClass("card")
+            var currentDate = $("<h2>").text(moment.unix(data.dt).format("LL"))
+            var currentTemp = $("<h2>").text("Today's temp: " + data.main.temp)
+            var currentHumidity = $("<h2>").text("Today's humidity:" + data.main.humidity)
+            
+
+
+
+
+            currentWeather.append(currentTemp, currentHumidity, currentDate)
+        $("#current-weather").append(currentWeather)
 
     });
 }
