@@ -36,7 +36,7 @@ function getApi2(lat,lon){
             var forecastCard = $("<div>").addClass("card")
             var date = $("<h2>").text(moment.unix(data.list[i].dt).format("LL"))
             var temp = $("<h2>").text("temp: " + data.list[i].main.temp)
-            var humidity = $("<h2>").text("humidity:" + data.list[i].main.humidity)
+            var humidity = $("<h2>").text("humidity: " + data.list[i].main.humidity)
             
 
 
@@ -61,7 +61,7 @@ function getApi3(lat,lon){
         var currentWeather = $("<div>").addClass("card")
             var currentDate = $("<h2>").text(moment.unix(data.dt).format("LL"))
             var currentTemp = $("<h2>").text("Today's temp: " + data.main.temp)
-            var currentHumidity = $("<h2>").text("Today's humidity:" + data.main.humidity)
+            var currentHumidity = $("<h2>").text("Today's humidity: " + data.main.humidity)
             
 
 
