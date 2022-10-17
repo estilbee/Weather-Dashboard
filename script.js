@@ -34,15 +34,17 @@ function getApi2(lat,lon){
         for( i = 4; i < data.list.length; i=i+8){ //i + 8 is telling it to iterate over every 24 hours for 5 days
             console.log(data.list[i])
             var forecastCard = $("<div>").addClass("card")
-            var date = $("<h2>").text(moment.unix(data.list[i].dt).format("LL"))
-            var temp = $("<h2>").text("temp: " + data.list[i].main.temp)
-            var humidity = $("<h2>").text("humidity: " + data.list[i].main.humidity)
-            
+            var date = $("<h4>").text(moment.unix(data.list[i].dt).format("LL")).addClass("white-text")
+            var temp = $("<h4>").text("temp: " + data.list[i].main.temp).addClass("white-text")
+            var humidity = $("<h4>").text("humidity: " + data.list[i].main.humidity).addClass("white-text")
+            var row = $("<div>").addClass("row")
+            var col = $("<div>").addClass("col s12 m5")
+            var panel = $("<div>").addClass("card-panel teal")
 
-
-
-
-            forecastCard.append(temp, humidity, date)
+            panel.append(date,temp,humidity)
+            col.append(panel)
+            row.append(col)
+            forecastCard.append(row)
         $("#forecast").append(forecastCard)
         }
     });
@@ -59,15 +61,18 @@ function getApi3(lat,lon){
         console.log(data); 
         
         var currentWeather = $("<div>").addClass("card")
-            var currentDate = $("<h2>").text(moment.unix(data.dt).format("LL"))
-            var currentTemp = $("<h2>").text("Today's temp: " + data.main.temp)
-            var currentHumidity = $("<h2>").text("Today's humidity: " + data.main.humidity)
-            
+            var currentDate = $("<h4>").text(moment.unix(data.dt).format("LL")).addClass("white-text")
+            var currentTemp = $("<h4>").text("Today's temp: " + data.main.temp).addClass("white-text")
+            var currentHumidity = $("<h4>").text("Today's humidity: " + data.main.humidity).addClass("white-text")
+            var row = $("<div>").addClass("row")
+            var col = $("<div>").addClass("col s12 m5")
+            var panel = $("<div>").addClass("card-panel teal")
 
 
-
-
-            currentWeather.append(currentTemp, currentHumidity, currentDate)
+            panel.append(currentDate,currentTemp,currentHumidity)
+            col.append(panel)
+            row.append(col)
+            currentWeather.append(row)
         $("#current-weather").append(currentWeather)
 
     });
