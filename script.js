@@ -20,7 +20,7 @@ for(var i =0; i<historyArray.length; i++){
 }
 
 function getApi(inputValue){
-var requestUrl= `http://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&appid=7ff95d427ec7a429b5759073047c96ef`;
+var requestUrl= `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&appid=7ff95d427ec7a429b5759073047c96ef`;
 fetch(requestUrl)
 .then(function (response) {
     return response.json();
@@ -37,7 +37,7 @@ fetch(requestUrl)
 }
 
 function getApi2(lat,lon){
-    var requestUrl2 = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7ff95d427ec7a429b5759073047c96ef&units=imperial`
+    var requestUrl2 = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=7ff95d427ec7a429b5759073047c96ef&units=imperial`
     fetch(requestUrl2)
     .then(function (response) {
         return response.json();
@@ -52,7 +52,7 @@ function getApi2(lat,lon){
             var temp = $("<h4>").text("temp: " + data.list[i].main.temp).addClass("white-text")
             var humidity = $("<h4>").text("humidity: " + data.list[i].main.humidity).addClass("white-text")
             var wind = $("<h4>").text("wind speed: " + data.list[i].wind.speed).addClass("white-text")
-            var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/"+ data.list[i].weather[0].icon + ".png")
+            var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/"+ data.list[i].weather[0].icon + ".png")
             var row = $("<div>").addClass("row")
             var col = $("<div>").addClass("col s12 m5")
             var panel = $("<div>").addClass("card-panel teal")
@@ -68,7 +68,7 @@ function getApi2(lat,lon){
 
 
 function getApi3(lat,lon){
-    var requestUrl3 = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7ff95d427ec7a429b5759073047c96ef&units=imperial`
+    var requestUrl3 = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=7ff95d427ec7a429b5759073047c96ef&units=imperial`
     fetch(requestUrl3)
     .then(function (response) {
         return response.json();
@@ -85,7 +85,7 @@ function getApi3(lat,lon){
             var row = $("<div>").addClass("row")
             var col = $("<div>").addClass("col s12 m5")
             var panel = $("<div>").addClass("card-panel teal")
-            var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/"+ data.weather[0].icon + ".png")
+            var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/"+ data.weather[0].icon + ".png")
 
             panel.append(icon,name,currentDate,currentTemp,currentHumidity,currentWind)
             col.append(panel)
